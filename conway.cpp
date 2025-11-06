@@ -67,22 +67,27 @@ void calculateGen(vector<vector<int>>& currmatrix, vector<vector<int>>& matrix, 
 }
 int main(){
 	// matrix size
-	int n = 10;
+	int n = 30;
 	vector<vector<int>> matrix(n, vector(n, 0)); 
 	vector<vector<int>> currmatrix(n, vector(n, 0));
 	vector<vector<int>> directions = {{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}};
 	// painting glider
-	matrix[3][3] = 1;
+/*	matrix[3][3] = 1;
 	matrix[3][4] = 1;
 	matrix[3][5] = 1;
 	matrix[2][5] = 1;
 	matrix[1][4] = 1;
+*/
+	// painting pentadecathlon
+	for (int j = 5; j < 15; j++){
+		matrix[5][j] = 1;
+	}
 
-	int generations = 15;
+	int generations = 30;
 	for (int i = 0; i < generations; i++){
-		calculateGen(currmatrix, matrix, directions);
 		cout << "Generation " << i << endl;
 		mprint(matrix);
+		calculateGen(currmatrix, matrix, directions);
 	}
 	return 0;
 }
