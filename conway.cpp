@@ -77,13 +77,28 @@ int main(){
 	matrix[3][5] = 1;
 	matrix[2][5] = 1;
 	matrix[1][4] = 1;
-*/
+
 	// painting pentadecathlon
 	for (int j = 5; j < 15; j++){
 		matrix[5][j] = 1;
 	}
+*/
+	// painting heavyweight spaceship
+	matrix[1][4] = 1;
+	matrix[1][5] = 1;
+	matrix[2][2] = 1;
+	matrix[2][7] = 1;
+	matrix[3][8] = 1;
+	matrix[4][2] = 1;
+	matrix[4][8] = 1;
+	matrix[5][3] = 1;
+	matrix[5][4] = 1;
+	matrix[5][5] = 1;
+	matrix[5][6] = 1;
+	matrix[5][7] = 1;
+	matrix[5][8] = 1;
 
-	int generations = 30;
+	int generations = 50;
 	for (int i = 0; i < generations; i++){
 		cout << "Generation " << i << endl;
 		mprint(matrix);
