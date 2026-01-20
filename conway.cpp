@@ -1,5 +1,6 @@
 #include <iostream>
 #include<vector>
+#include <unistd.h>
 using namespace std;
 
 // matrix print
@@ -10,7 +11,7 @@ void mprint(vector<vector<int>>& matrix){
 			if (matrix[i][j]){
 				printf("#");
 			} else {
-				printf(".");
+				printf(" ");
 			}
 		}
 		printf("\n");
@@ -67,22 +68,25 @@ void calculateGen(vector<vector<int>>& currmatrix, vector<vector<int>>& matrix, 
 }
 int main(){
 	// matrix size
-	int n = 30;
+	int n = 20;
 	vector<vector<int>> matrix(n, vector(n, 0)); 
 	vector<vector<int>> currmatrix(n, vector(n, 0));
 	vector<vector<int>> directions = {{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}};
+/*
 	// painting glider
-/*	matrix[3][3] = 1;
+	matrix[3][3] = 1;
 	matrix[3][4] = 1;
 	matrix[3][5] = 1;
 	matrix[2][5] = 1;
 	matrix[1][4] = 1;
 
+*/
 	// painting pentadecathlon
 	for (int j = 5; j < 15; j++){
 		matrix[5][j] = 1;
 	}
-*/
+
+/*
 	// painting heavyweight spaceship
 	matrix[1][4] = 1;
 	matrix[1][5] = 1;
@@ -97,12 +101,21 @@ int main(){
 	matrix[5][6] = 1;
 	matrix[5][7] = 1;
 	matrix[5][8] = 1;
+*/
 
-	int generations = 50;
+	
+	// clears the screen once
+    	cout << "\x1b[2J";
+
+	int generations = 30;
 	for (int i = 0; i < generations; i++){
 		cout << "Generation " << i << endl;
 		mprint(matrix);
 		calculateGen(currmatrix, matrix, directions);
+
+		// moves the cursor to the top left every frame
+		cout << "\x1b[H";
+		usleep(100000);
 	}
 	return 0;
 }
